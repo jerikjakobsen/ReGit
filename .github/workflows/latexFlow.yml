@@ -1,0 +1,24 @@
+name: Build LaTeX document
+on: [push, pull_request] # Trigger the workflow on push or pull request events
+
+jobs:
+  build_latex:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Check out repository
+      uses: actions/checkout@v2
+
+    - name: Set up TeX Live
+      uses: dante-ev/latex-action@v1.0.0
+      with:
+        preinstall: texlive-latex-extra cm-super
+
+    - name: Compile LaTeX document
+      run: latexmk -pdf -synctex=1 -interaction=nonstopmode -file-line-error resume.tex
+
+    - name: Upload generated PDF
+      uses: actions/upload-artifact@v2
+      with:
+        name: mydocument
+        path: main.pdf
