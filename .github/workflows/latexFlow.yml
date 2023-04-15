@@ -10,15 +10,6 @@ jobs:
       uses: actions/checkout@v2
 
     - name: Set up TeX Live
-      uses: dante-ev/latex-action@v2
+      uses: xu-cheng/latex-action@v2
       with:
-        preinstall: texlive-latex-extra cm-super
-
-    - name: Compile LaTeX document
-      run: latexmk -pdf -synctex=1 -interaction=nonstopmode -file-line-error resume.tex
-
-    - name: Upload generated PDF
-      uses: actions/upload-artifact@v2
-      with:
-        name: mydocument
-        path: resume.pdf
+        latexmk-args: "-pdf -
