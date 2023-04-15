@@ -12,10 +12,9 @@ jobs:
     - name: Set up TeX Live
       uses: xu-cheng/latex-action@v2
       with:
-        latexmk-args: "-pdf -synctex=1 -interaction=nonstopmode -file-line-error"
-
-    - name: Compile LaTeX document
-      run: latexmk resume.tex
+        root_file: resume.tex
+        latexmk_use_xelatex: true
+        latexmk_shell_escape: true
 
     - name: Upload generated PDF
       uses: actions/upload-artifact@v2
