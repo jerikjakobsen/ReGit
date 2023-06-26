@@ -21,10 +21,13 @@ jobs:
         with:
           name: resume
           path: resume.pdf
-      - name: Deploy to GitHub Pages
-          uses: JamesIves/github-pages-deploy-action@4.1.3
-          with:
-            branch: gh-pages # Change this to the desired branch
-            folder: . # Change this to the folder containing the PDF
-            clean: true
-            token: ${{ secrets.GITHUB_TOKEN }}
+      - name: Upload S3    
+        uses: shallwefootball/s3-upload-action@master
+        id: S3
+        with:
+          aws_key_id: ${{secrets.AWS_ACCESS_ID}}
+          aws_secret_access_key: ${{secrets.AWS_SECRET_ACCESS_KEY}}
+          aws_bucket: jerikjakobsen-resume-bucket
+          source_dir: resume.pdf  
+      - name: Link To Report
+        run: echo "https://s3.amazonaws.com/jerikjakobsen-resume-bucket/resume.pdf"
