@@ -28,6 +28,6 @@ jobs:
           aws_key_id: ${{secrets.AWS_ACCESS_ID}}
           aws_secret_access_key: ${{secrets.AWS_SECRET_ACCESS_KEY}}
           aws_bucket: jerikjakobsen-resume-bucket
-          source_dir: resume.pdf  
+          source_dir: . 
       - name: Link To Report
         run: echo "https://s3.amazonaws.com/jerikjakobsen-resume-bucket/resume.pdf"
