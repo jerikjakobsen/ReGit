@@ -22,7 +22,7 @@ jobs:
           name: resume
           path: resume.pdf
       - name: Upload S3    
-        uses: jerikjakobsen/upload-s3-action-single-file@master
+        uses: jerikjakobsen/upload-s3-action@master
         id: S3
         with:
           aws_key_id: ${{secrets.AWS_ACCESS_ID}}
