@@ -5,7 +5,7 @@ https://www.overleaf.com/latex/templates/data-science-tech-resume-template/zcdmp
 
 A resume git repo written in LaTex. This repo is integrated with a github action to compile the resume on every push.
 
-(Download up to date resume here)[https://jerikjakobsen-resume-bucket.s3.amazonaws.com/resume.pdf]
+[Download up to date resume here](https://jerikjakobsen-resume-bucket.s3.amazonaws.com/resume.pdf)
 
 ## Thanks to the Original Creators
 ### Editor:
