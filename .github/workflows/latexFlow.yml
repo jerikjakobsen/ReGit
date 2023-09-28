@@ -15,6 +15,12 @@ jobs:
           root_file: resume.tex
           latexmk_use_xelatex: true
           latexmk_shell_escape: true
+          
+      - name: Extract branch name
+        shell: bash
+        run: echo "file_name=${GITHUB_HEAD_REF:-${GITHUB_REF#refs/heads/}}/resume.pdf" >> $GITHUB_OUTPUT
+        id: file_name
+
 
       - name: Upload generated PDF
         uses: actions/upload-artifact@v2
@@ -29,5 +35,4 @@ jobs:
           aws_secret_access_key: ${{secrets.AWS_SECRET_ACCESS_KEY}}
           aws_bucket: jerikjakobsen-resume-bucket
           source_dir: 'resume.pdf'
-      - name: Link To Report
-        run: echo "https://s3.amazonaws.com/jerikjakobsen-resume-bucket/resume.pdf"
+          destination_dir: ${{steps.file_name.outputs.file_name}}
